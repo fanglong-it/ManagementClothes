@@ -111,7 +111,7 @@
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
             <!---Product Start-->
-            <div class="col mb-5">
+            <div class="col mb-5" th:each="clothes : ${LIST_CLOTHES}">
                 <div class="card h-100">
                     <!-- Product image-->
                     <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."/>
@@ -119,9 +119,9 @@
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
-                            <h5 class="fw-bolder">Fancy Product</h5>
+                            <h5 class="fw-bolder" th:text="${clothes.getName()}">Fancy Product</h5>
                             <!-- Product price-->
-                            $40.00 - $80.00
+                            <span th:text="${clothes.getPrice()}"></span>
                         </div>
                     </div>
                     <!-- Product actions-->
@@ -131,6 +131,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="col mb-5">
                 <div class="card h-100">
                     <!-- Sale badge-->

@@ -14,8 +14,10 @@ public class MyUser extends User {
         // TODO Auto-generated constructor stub
     }
 
-    String fullname;
+    String fullName;
+
     String email;
+
     Long id;
 
     public String getEmail() {
@@ -34,12 +36,12 @@ public class MyUser extends User {
         this.id = id;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
     public void setFullname(String fullname) {
-        this.fullname = fullname;
+        this.fullName = fullname;
     }
 
 

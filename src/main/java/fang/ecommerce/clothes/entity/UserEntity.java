@@ -15,24 +15,16 @@ package fang.ecommerce.clothes.entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @Column(name = "email", nullable = false, unique = true)
-    private String email;
-
-    @Column(name = "password", nullable = false)
-    private String password;
-
-    @Column(name = "phonenumber", nullable = false, length = 10)
-    private String phoneNumber;
 
     @Column(name = "firstname", nullable = false)
     private String firstname;
@@ -40,19 +32,22 @@ public class UserEntity {
     @Column(name = "lastname", nullable = false)
     private String lastname;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
-    List<RoleEntity> roles = new ArrayList<>();
+    @Column(name = "photo")
+    private String photoPath;
 
+    @Column(name = "phonenumber", nullable = false, length = 10)
+    private String phoneNumber;
 
+    @OneToOne
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
+    private AccountEntity accountEntity;
 
-    public String getPassword() {
-        return password;
-    }
+    @OneToMany(mappedBy = "userEntity_Address")
+    private Set<AddressEntity> addressEntitySet;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    @OneToMany(mappedBy = "userEntity_Order")
+    private Set<OrderEntity> orderEntitySet;
+
 
     public long getId() {
         return id;
@@ -60,22 +55,6 @@ public class UserEntity {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public String getFirstname() {
@@ -94,11 +73,45 @@ public class UserEntity {
         this.lastname = lastname;
     }
 
-    public List<RoleEntity> getRoles() {
-        return roles;
+    public String getPhotoPath() {
+        return photoPath;
     }
 
-    public void setRoles(List<RoleEntity> roles) {
-        this.roles = roles;
+    public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
     }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public AccountEntity getAccountEntity() {
+        return accountEntity;
+    }
+
+    public void setAccountEntity(AccountEntity accountEntity) {
+        this.accountEntity = accountEntity;
+    }
+
+    public Set<AddressEntity> getAddressEntitySet() {
+        return addressEntitySet;
+    }
+
+    public void setAddressEntitySet(Set<AddressEntity> addressEntitySet) {
+        this.addressEntitySet = addressEntitySet;
+    }
+
+    public Set<OrderEntity> getOrderEntitySet() {
+        return orderEntitySet;
+    }
+
+    public void setOrderEntitySet(Set<OrderEntity> orderEntitySet) {
+        this.orderEntitySet = orderEntitySet;
+    }
+
+
 }

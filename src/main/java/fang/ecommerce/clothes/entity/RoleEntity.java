@@ -17,18 +17,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Roles")
+@Table(name = "roles")
 public class RoleEntity {
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")
     private String name;
 
     @ManyToMany(mappedBy = "roles")
-    List<UserEntity> users = new ArrayList<>();
-
+    List<AccountEntity> accountEntities = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -46,11 +45,11 @@ public class RoleEntity {
         this.name = name;
     }
 
-    public List<UserEntity> getUsers() {
-        return users;
+    public List<AccountEntity> getAccountEntities() {
+        return accountEntities;
     }
 
-    public void setUsers(List<UserEntity> users) {
-        this.users = users;
+    public void setAccountEntities(List<AccountEntity> accountEntities) {
+        this.accountEntities = accountEntities;
     }
 }
