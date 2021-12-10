@@ -1,349 +1,138 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-
 <head>
     <meta charset="utf-8"/>
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Small Business - Start Bootstrap Template</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico"/>
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link th:href="@{/css/styles.css}" rel="stylesheet"/>
-    <link href="/css/slideshow.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/css/background.css">
-    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
-
-    <script src="/js/scripts.js"></script>
+    <link href="/css/styles.css" rel="stylesheet"/>
 </head>
+<body th:style="'background: url(/assets/img/create-anime-background-style.jpg) no-repeat center center fixed;'">
+<!-- Responsive navbar-->
 
-<body>
-<!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light ">
-    <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#"><i class="Favicon--"><img src="/assets/icon/pig-icon-png-14 (1).jpg" alt="icon"
-                                                                   style="max-width: 50px; max-height: 50px;">Ụt Ụt Shop</i>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">All Products</a></li>
-                        <li>
-                            <hr class="dropdown-divider"/>
-                        </li>
-                        <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="bi-cart-fill me-1"></i>
-                    Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
-            </form>
+<div th:include="/common/navbar.html"></div>
+
+
+<!-- Page Content-->
+<div class="container px-4 px-lg-5">
+    <!-- Heading Row-->
+
+    <!-- Call to Action-->
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body"><p class="text-white m-0">This call to action card is a great place to showcase some
+            important information or display a clever tagline!</p></div>
+    </div>
+
+    <div class="row">
+
+        <div class="text-white my-5 text-center">
+            <div class="card-body">
+
+                <p class="text-dark fs-3">Select Categrory:</p>
+                <a class="btn btn-dark">Long sleeve</a>
+                <a class="btn btn-dark">Jacket</a>
+                <a class="btn btn-dark">hoodie</a>
+
+                <p class="text-warning fs-4">Select Price:</p>
+                <a class="btn btn-warning">500-1000$</a>
+                <a class="btn btn-warning">1000-2000$</a>
+                <a class="btn btn-warning">2000-4000$</a>
+
+                <hr>
+                <form th:action="@{|/shop/page/${currentPage}|}" method="get">
+                    <div class="input-group mb-3 align-items-center text-center">
+                        <input type="text" name="searchValue" th:value="${searchValue}"
+                               class="form-control text-center btn-outline-light" placeholder="Search Value"
+                               aria-label="Recipient's username" aria-describedby="button-addon2">
+                    </div>
+                </form>
+
+            </div>
         </div>
     </div>
-</nav>
-<!-- Header-->
-<div class="container">
-    <!--SLideShow-->
+    <hr>
 
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="slideshow-container">
-            <div class="mySlides ">
-                <img class="w3-animate-right" src="/assets/ImgSlide/casey-horner-rtCujH697DU-unsplash2.jpg"
-                     alt="slideImg"
-                     style="width:850px; max-height: 300px; border-radius: 10px;">
-                <div class="text">
-                    <h1 class="display-4 fw-bolder w3-animate-right">
-                        Shop in style
-                    </h1>
+    <!-- Content Row-->
+    <div class="row gx-4 gx-lg-5">
+
+        <div class="col-md-4 mb-5" th:each="clothes:${LIST_CLOTHES}">
+            <div class="card" style="width: 18rem;">
+                <img th:src="@{'/get_image/show/'+ ${clothes.getPhotoPath()}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${clothes.name}">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <hr>
+                    <div class="text-center">
+                        <a class="btn btn-outline-dark btn-sm" th:href="|/shop/viewDetail/${clothes.id}|">Details</a>
+                        <a class="btn btn-outline-dark btn-sm" href="#!">Add to cart</a>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="mySlides ">
 
-                <img class="w3-animate-right" src="/assets/ImgSlide/jade-stephens-T-FSAK4Bv9c-unsplash.jpg"
-                     alt="slideImg"
-                     style="width:850px; max-height: 300px; border-radius: 10px;">
-                <div class="text">
-                    <h2 class="display-4 fw-bolder w3-animate-right">
-                        Make Your Own Style
-                    </h2>
+        <div class="text-center">
+
+                <div th:if="${totalPages > 0}">
+                    <div class="row">
+                        <p> total Items:
+                            <span th:text="${totalItems}"></span>
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <div th:if="${searchValue == null}">
+
+                        <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+                        <a th:if="${currentPage != i}" th:href="@{|/shop/page/${i}?searchValue=|}" th:text="${i}"></a>
+                            <span th:unless="${currentPage != i}" th:text="${i}"></span> &nbsp; &nbsp;
+                        </span>
+                        <a th:if="${currentPage < totalPages}" th:href="@{|/shop/page/${currentPage + 1}?searchValue=|}">next</a>
+                        <span th:unless="${currentPage < totalPages}">next</span>
+
+                        <a th:if="${currentPage < totalPages}" th:href="@{|/shop/page/${totalPages}?searchValue=|}">last</a>
+                        <span th:unless="${currentPage < totalPages}">last</span>
+                    </div>
+
+                        <div th:if="${searchValue != null}">
+                            <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+                        <a th:if="${currentPage != i}" th:href="@{|/shop/page/${i}?searchValue=${searchValue}|}" th:text="${i}"></a>
+                            <span th:unless="${currentPage != i}" th:text="${i}"></span> &nbsp; &nbsp;
+                        </span>
+                            <a th:if="${currentPage < totalPages}" th:href="@{|/shop/page/${currentPage + 1}?searchValue=${searchValue}|}">next</a>
+                            <span th:unless="${currentPage < totalPages}">next</span>
+
+                            <a th:if="${currentPage < totalPages}" th:href="@{|/shop/page/${totalPages}?searchValue=${searchValue}|}">last</a>
+                            <span th:unless="${currentPage < totalPages}">last</span>
+
+                        </div>
+
                 </div>
-            </div>
 
-            <div class="mySlides ">
-                <img class="w3-animate-right" src="/assets/ImgSlide/pexels-roberto-nickson-2775196.jpg" alt="slideImg"
-                     style="width:850px; max-height: 300px; border-radius: 10px;">
-                <div class="text">
-                    <h3 class="display-4 fw-bolder w3-animate-right">
-                        Let's go
-                    </h3>
                 </div>
+            <div th:if="${totalPages == 0}">
+                <div class="text-center">
+                    <p>Nothing to search!</p>
+                    <a th:href="@{|/shop/page/1?searchValue=${'_'}|}">Click to return</a>
+                </div>
+
             </div>
 
         </div>
-        <div style="text-align:center">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
-        <!--SLideShow End-->
+
+
     </div>
 </div>
-
-<br>
-
-<!-- Section-->
-<section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
-            <!---Product Start-->
-            <div class="col mb-5" th:each="clothes : ${LIST_CLOTHES}">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder" th:text="${clothes.getName()}">Fancy Product</h5>
-                            <!-- Product price-->
-                            <span th:text="${clothes.getPrice()}"></span>
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                    </div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Special Item</h5>
-                            <!-- Product reviews-->
-                            <div class="d-flex justify-content-center small text-warning mb-2">
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                            </div>
-                            <!-- Product price-->
-                            <span class="text-muted text-decoration-line-through">$20.00</span>
-                            $18.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                    </div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Sale Item</h5>
-                            <!-- Product price-->
-                            <span class="text-muted text-decoration-line-through">$50.00</span>
-                            $25.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Popular Item</h5>
-                            <!-- Product reviews-->
-                            <div class="d-flex justify-content-center small text-warning mb-2">
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                            </div>
-                            <!-- Product price-->
-                            $40.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                    </div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Sale Item</h5>
-                            <!-- Product price-->
-                            <span class="text-muted text-decoration-line-through">$50.00</span>
-                            $25.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Fancy Product</h5>
-                            <!-- Product price-->
-                            $120.00 - $280.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                    </div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Special Item</h5>
-                            <!-- Product reviews-->
-                            <div class="d-flex justify-content-center small text-warning mb-2">
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                            </div>
-                            <!-- Product price-->
-                            <span class="text-muted text-decoration-line-through">$20.00</span>
-                            $18.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..."/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Popular Item</h5>
-                            <!-- Product reviews-->
-                            <div class="d-flex justify-content-center small text-warning mb-2">
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                            </div>
-                            <!-- Product price-->
-                            $40.00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="text-center">
-        <p>Paging here</p>
-        <div class="nav-item">
-            <button class="btn btn-outline-dark">1</button>
-            <button class="btn btn-outline-dark">2</button>
-            <button class="btn btn-outline-dark">3</button>
-        </div>
-
-    </div>
-</section>
-
+<hr>
 <!-- Footer-->
-<footer class="py-5">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
-    </div>
-</footer>
+<div th:include="/common/footer.html"></div>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="/js/scripts.js"></script>
 </body>
-
 </html>

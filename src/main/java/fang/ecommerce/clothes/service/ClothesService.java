@@ -4,6 +4,9 @@ import fang.ecommerce.clothes.entity.CategoryEntity;
 import fang.ecommerce.clothes.entity.ClothesEntity;
 import fang.ecommerce.clothes.repository.ClothesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +21,25 @@ public class ClothesService {
     CategoryService categoryService;
 
 
-    public List<ClothesEntity> findAll(){
+    public List<ClothesEntity> findAll() {
         List<ClothesEntity> clothesEntityList = clothesRepository.findAll();
         return clothesEntityList;
+    }
+
+    public ClothesEntity getById(Long id) {
+        return clothesRepository.getById(id);
+    }
+
+    public Page<ClothesEntity> findPaginated(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+        return this.clothesRepository.findAll(pageable);
+    }
+
+    public Page<ClothesEntity> findByName(int pageNo, int pageSize, String name) {
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+        if (name != null) {
+            return this.clothesRepository.findClothesEntitiesByNameContaining(name, pageable);
+        }
+        return this.clothesRepository.findAll(pageable);
     }
 }

@@ -55,6 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/quiz/editQuiz/**","/quiz/viewQuiz/**","/quiz/viewAnswer/**","/quiz/createAnswer/**","/course/createPage").hasAnyAuthority("ADMIN")
 //                .antMatchers("/quiz/joinPage/**","/quiz/attempt","/grade/view","/quiz/check").hasAnyAuthority("USER")
 //
+
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()

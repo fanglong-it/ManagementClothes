@@ -19,7 +19,7 @@ public class AccountEntity {
     @Column(name = "is_available")
     private boolean isAvailable;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "acc_role", joinColumns = @JoinColumn(name = "account_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     List<RoleEntity> roles = new ArrayList<>();
 

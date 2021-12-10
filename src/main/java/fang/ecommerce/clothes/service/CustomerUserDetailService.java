@@ -31,7 +31,6 @@ public class CustomerUserDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
-
         AccountEntity accountEntity = accountRepository.getAccountEntitiesByEmail(s);
 
         if(accountEntity == null){

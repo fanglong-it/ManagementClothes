@@ -1,6 +1,7 @@
 package fang.ecommerce.clothes.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "size")
@@ -16,8 +17,8 @@ public class SizeEntity {
     @JoinColumn(name = "clothes_id", referencedColumnName = "id")
     private ClothesEntity clothesEntity;
 
-    @OneToOne(mappedBy = "sizeEntity_OrderDetail")
-    private OrderDetailEntity orderDetailEntity;
+    @OneToMany(mappedBy = "sizeEntity_OrderDetail")
+    private Set<OrderDetailEntity> orderDetailEntitySet;
 
     @OneToOne(mappedBy = "sizeEntity")
     private AvailableEntity availableEntity;
@@ -46,12 +47,12 @@ public class SizeEntity {
         this.clothesEntity = clothesEntity;
     }
 
-    public OrderDetailEntity getOrderDetailEntity() {
-        return orderDetailEntity;
+    public Set<OrderDetailEntity> getOrderDetailEntitySet() {
+        return orderDetailEntitySet;
     }
 
-    public void setOrderDetailEntity(OrderDetailEntity orderDetailEntity) {
-        this.orderDetailEntity = orderDetailEntity;
+    public void setOrderDetailEntitySet(Set<OrderDetailEntity> orderDetailEntitySet) {
+        this.orderDetailEntitySet = orderDetailEntitySet;
     }
 
     public AvailableEntity getAvailableEntity() {

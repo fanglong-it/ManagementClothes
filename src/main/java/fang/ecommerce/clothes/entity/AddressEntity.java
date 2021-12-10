@@ -3,6 +3,7 @@ package fang.ecommerce.clothes.entity;
 import org.springframework.security.core.userdetails.User;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "address")
@@ -20,9 +21,8 @@ public class AddressEntity {
     @JoinColumn(name = "users_id")
     private UserEntity userEntity_Address;
 
-
-    @OneToOne(mappedBy = "addressEntity")
-    private OrderEntity orderEntity;
+    @OneToMany(mappedBy = "addressEntity")
+    private Set<OrderEntity> orderEntitySet;
 
 
     public Long getId() {
@@ -49,11 +49,21 @@ public class AddressEntity {
         this.userEntity_Address = userEntity;
     }
 
-    public OrderEntity getOrderEntity() {
-        return orderEntity;
+
+    public UserEntity getUserEntity_Address() {
+        return userEntity_Address;
     }
 
-    public void setOrderEntity(OrderEntity orderEntity) {
-        this.orderEntity = orderEntity;
+    public void setUserEntity_Address(UserEntity userEntity_Address) {
+        this.userEntity_Address = userEntity_Address;
+    }
+
+
+    public Set<OrderEntity> getOrderEntitySet() {
+        return orderEntitySet;
+    }
+
+    public void setOrderEntitySet(Set<OrderEntity> orderEntitySet) {
+        this.orderEntitySet = orderEntitySet;
     }
 }

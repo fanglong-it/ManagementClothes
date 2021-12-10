@@ -17,7 +17,7 @@ public class OrderEntity {
     private String code;
 
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private AddressEntity addressEntity;
 

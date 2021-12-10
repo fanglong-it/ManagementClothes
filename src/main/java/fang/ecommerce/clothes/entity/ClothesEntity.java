@@ -16,6 +16,9 @@ public class ClothesEntity {
     @Column(name = "path")
     private String photoPath;
 
+    @Column(name = "content")
+    private String content;
+
     @Column(name = "price")
     private float price;
 
@@ -84,5 +87,13 @@ public class ClothesEntity {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }
