@@ -2,6 +2,7 @@ package fang.ecommerce.clothes.config;
 
 
 import fang.ecommerce.clothes.service.CustomerUserDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -47,6 +48,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
+    @Autowired
+    private CustomAuthenticationSuccessHandler authenticationSuccessHandler;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -62,6 +66,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/user/login")
                 	.usernameParameter("email")
                     .defaultSuccessUrl("/")
+//                    .successHandler(authenticationSuccessHandler)
                     .failureUrl("/user/login?incorrectAccount")
                     .permitAll()
                 .and()

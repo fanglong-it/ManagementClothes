@@ -1,9 +1,11 @@
 package fang.ecommerce.clothes.dto;
 
+import fang.ecommerce.clothes.entity.RoleEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 public class MyUser extends User {
 

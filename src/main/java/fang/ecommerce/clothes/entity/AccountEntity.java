@@ -2,6 +2,7 @@ package fang.ecommerce.clothes.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Entity
@@ -72,5 +73,17 @@ public class AccountEntity {
 
     public void setUserEntity(UserEntity userEntity) {
         this.userEntity = userEntity;
+    }
+
+    public boolean hasRole(String roleName) {
+        Iterator<RoleEntity> iterator = this.roles.iterator();
+        while (iterator.hasNext()) {
+            RoleEntity role = iterator.next();
+            if (role.getName().equals(roleName)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
