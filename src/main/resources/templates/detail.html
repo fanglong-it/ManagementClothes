@@ -40,36 +40,7 @@
                     <img class="img-fluid rounded mb-lg-0" th:src="@{'/get_image/show/'+ ${CLOTHES.getPhotoPath()}}"
                          alt="..." style="width: 710px; height: 623px;" />
                     <hr>
-                    <div class="row">
-                        <div class="col-3">
-                            <div class="view overlay rounded z-depth-1 gallery-item">
-                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
-                                     class="img-fluid">
-                                <div class="mask rgba-white-slight"></div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="view overlay rounded z-depth-1 gallery-item">
-                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
-                                     class="img-fluid">
-                                <div class="mask rgba-white-slight"></div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="view overlay rounded z-depth-1 gallery-item">
-                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
-                                     class="img-fluid">
-                                <div class="mask rgba-white-slight"></div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="view overlay rounded z-depth-1 gallery-item">
-                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
-                                     class="img-fluid">
-                                <div class="mask rgba-white-slight"></div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
@@ -77,13 +48,13 @@
 
         <div class="col-md-6 btn-light">
             <h5 th:text="${CLOTHES.name}"></h5>
-            <p class="mb-2 text-muted text-uppercase small">Shirts</p>
+            <p class="mb-2 text-muted text-uppercase small" th:text="${CLOTHES.getCategoryEntity().name}"></p>
             <div class="row">
                 <div class="container">
                     <span id="rateMe1"></span>
                 </div>
             </div>
-            <p><span class="mr-1"><strong>$12.99</strong></span></p>
+            <p><span class="mr-1"><strong th:text="${CLOTHES.price}"></strong>đ</span></p>
             <p class="pt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit
                 error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio,
                 officia quis dolore quos sapiente tempore alias.</p>
@@ -122,25 +93,22 @@
                             </div>
                         </td>
                         <td>
-                            <div class="mt-1">
+                            <div class="mt-1" th:each="map : ${SIZE_STOCK}">
                                 <div class="form-check form-check-inline pl-0">
                                     <input type="radio" class="form-check-input" id="small"
                                            name="materialExampleRadios" checked>
+                                    <span>Size: </span>
                                     <label class="form-check-label small text-uppercase card-link-secondary"
-                                           for="small">Small</label>
-                                </div>
-                                <div class="form-check form-check-inline pl-0">
-                                    <input type="radio" class="form-check-input" id="medium"
-                                           name="materialExampleRadios">
+                                           for="small" th:text="${map.key.name}"></label>
+                                    <br>
+                                    <span>Stock: </span>
+
                                     <label class="form-check-label small text-uppercase card-link-secondary"
-                                           for="medium">Medium</label>
+                                           for="small" th:text="${map.value.stock}"></label>
+
+
                                 </div>
-                                <div class="form-check form-check-inline pl-0">
-                                    <input type="radio" class="form-check-input" id="large"
-                                           name="materialExampleRadios">
-                                    <label class="form-check-label small text-uppercase card-link-secondary"
-                                           for="large">Large</label>
-                                </div>
+
                             </div>
                         </td>
                     </tr>

@@ -27,32 +27,9 @@
             important information or display a clever tagline!</p></div>
     </div>
 
-    <div class="row">
+    <!-- Category -->
+    <div th:include="/common/category.html">
 
-        <div class="text-white my-5 text-center">
-            <div class="card-body">
-
-                <p class="text-dark fs-3">Select Categrory:</p>
-                <a class="btn btn-dark">Long sleeve</a>
-                <a class="btn btn-dark">Jacket</a>
-                <a class="btn btn-dark">hoodie</a>
-
-                <p class="text-warning fs-4">Select Price:</p>
-                <a class="btn btn-warning">500-1000$</a>
-                <a class="btn btn-warning">1000-2000$</a>
-                <a class="btn btn-warning">2000-4000$</a>
-
-                <hr>
-                <form th:action="@{|/shop/page/${currentPage}|}" method="get">
-                    <div class="input-group mb-3 align-items-center text-center">
-                        <input type="text" name="searchValue" th:value="${searchValue}"
-                               class="form-control text-center btn-outline-light" placeholder="Search Value"
-                               aria-label="Recipient's username" aria-describedby="button-addon2">
-                    </div>
-                </form>
-
-            </div>
-        </div>
     </div>
     <hr>
 

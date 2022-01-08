@@ -1,18 +1,24 @@
 package fang.ecommerce.clothes.controller;
 
+import fang.ecommerce.clothes.entity.AvailableEntity;
 import fang.ecommerce.clothes.entity.CategoryEntity;
 import fang.ecommerce.clothes.entity.ClothesEntity;
+import fang.ecommerce.clothes.entity.SizeEntity;
+import fang.ecommerce.clothes.service.AvailableService;
 import fang.ecommerce.clothes.service.CategoryService;
 import fang.ecommerce.clothes.service.ClothesService;
+import fang.ecommerce.clothes.service.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +32,13 @@ public class ShopController {
     @Autowired
     CategoryService categoryService;
 
+    @Autowired
+    SizeService sizeService;
+
+    @Autowired
+    AvailableService availableService;
+
+
 
     @GetMapping("/")
     public String homePage(Model model) {
@@ -38,17 +51,39 @@ public class ShopController {
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
-//        model.addAttribute("LIST_CATEGORY", categoryEntityList);
+        model.addAttribute("LIST_CATEGORY", categoryService.findAllCategory());
         return "index";
 
     }
 
     @GetMapping("/viewDetail/{clothesId}")
-    public String viewProductDetail(@PathVariable("clothesId") Long clothesId, Model model) {
+    public String viewProductDetail(@PathVariable("clothesId") Long clothesId, Model model, ModelMap modelMap) {
         model.addAttribute("CLOTHES", clothesService.getById(clothesId));
+
+        model.addAttribute("SIZE", sizeService.findAllSizeById(clothesId));
+
+        List<SizeEntity> sizeEntityList = sizeService.findAllSizeById(clothesId);
+
+        HashMap<SizeEntity, AvailableEntity> hashMap = new HashMap<>();
+
+
+        for (SizeEntity size :
+                sizeEntityList) {
+            AvailableEntity availableEntity = availableService.getAvailableEntityBySizeId(size.getId());
+
+            hashMap.put(size, availableEntity);
+        }
+
+        modelMap.put("SIZE_STOCK", hashMap);
+
+
+
+
         return "detail";
 
     }
+
+
 
     @GetMapping("/page/{pageNo}")
     public String findPaginated(@PathVariable("pageNo") int pageNo, Model model, @RequestParam("searchValue") String value) {
