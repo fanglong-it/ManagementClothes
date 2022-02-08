@@ -76,9 +76,7 @@ public class AccountEntity {
     }
 
     public boolean hasRole(String roleName) {
-        Iterator<RoleEntity> iterator = this.roles.iterator();
-        while (iterator.hasNext()) {
-            RoleEntity role = iterator.next();
+        for (RoleEntity role : this.roles) {
             if (role.getName().equals(roleName)) {
                 return true;
             }
