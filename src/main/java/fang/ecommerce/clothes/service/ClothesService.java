@@ -1,6 +1,5 @@
 package fang.ecommerce.clothes.service;
 
-import fang.ecommerce.clothes.entity.CategoryEntity;
 import fang.ecommerce.clothes.entity.ClothesEntity;
 import fang.ecommerce.clothes.repository.ClothesRepository;
 import org.springframework.beans.factory.annotation.Autowired;

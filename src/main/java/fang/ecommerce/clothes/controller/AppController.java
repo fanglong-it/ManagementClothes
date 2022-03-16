@@ -1,14 +1,7 @@
 package fang.ecommerce.clothes.controller;
 
-import fang.ecommerce.clothes.dto.MyUser;
-import fang.ecommerce.clothes.entity.AccountEntity;
-import fang.ecommerce.clothes.service.CustomerUserDetailService;
-import org.apache.tomcat.util.descriptor.web.ContextHandler;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 

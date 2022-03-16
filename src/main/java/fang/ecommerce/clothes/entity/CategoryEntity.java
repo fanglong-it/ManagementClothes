@@ -19,6 +19,7 @@ public class CategoryEntity {
     @OneToMany(mappedBy = "categoryEntity")
     private Set<ClothesEntity> clothesEntity;
 
+
     public Long getId() {
         return id;
     }

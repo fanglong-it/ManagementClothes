@@ -1,7 +1,5 @@
 package fang.ecommerce.clothes.entity;
 
-import org.hibernate.annotations.NaturalId;
-
 import javax.persistence.*;
 import java.util.Set;
 

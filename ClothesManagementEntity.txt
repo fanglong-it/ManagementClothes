@@ -1,0 +1,24 @@
+
+RoleEntity(id, Role, accountId)
+
+AccountEntity(id, email, password, isAvailable)
+
+UserEntity(id, firstName, lastName, nickName, photoPath, phoneNumber, accountId)
+
+AddressEntity(id, address, userId)
+
+Order(id, code, address, totalPrice, UserId)
+
+OrderDetails(id, orderCode, clothesId, clothesSizeId, quantity, price)
+
+orderStatus(id, Status, orderId) 
+
+clothes(id, name, price, photoPath)
+
+clothesSize(id, size, clothesId)
+
+clothesAvailable(id, Stock,clothesSizeId)
+
+Category(id, cateName, clothesId)
+
+

@@ -31,7 +31,7 @@ public class ImageUploadController {
                         .body(byteArrayResource);
 
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
         }
         return ResponseEntity.badRequest().build();

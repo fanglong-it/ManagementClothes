@@ -1,7 +1,5 @@
 package fang.ecommerce.clothes.entity;
 
-import org.springframework.security.core.userdetails.User;
-
 import javax.persistence.*;
 import java.util.Set;
 

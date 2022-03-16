@@ -1,6 +1,5 @@
 package fang.ecommerce.clothes.dto;
 
-import fang.ecommerce.clothes.entity.RoleEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
