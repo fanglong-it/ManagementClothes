@@ -1,13 +1,11 @@
 package fang.ecommerce.clothes.controller;
 
+import fang.ecommerce.clothes.dto.CartItem;
 import fang.ecommerce.clothes.entity.AvailableEntity;
 import fang.ecommerce.clothes.entity.CategoryEntity;
 import fang.ecommerce.clothes.entity.ClothesEntity;
 import fang.ecommerce.clothes.entity.SizeEntity;
-import fang.ecommerce.clothes.service.AvailableService;
-import fang.ecommerce.clothes.service.CategoryService;
-import fang.ecommerce.clothes.service.ClothesService;
-import fang.ecommerce.clothes.service.SizeService;
+import fang.ecommerce.clothes.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -18,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -38,6 +37,9 @@ public class ShopController {
     @Autowired
     AvailableService availableService;
 
+    @Autowired
+    ShoppingCartService shoppingCartService;
+
 
 
     @GetMapping("/")
@@ -55,6 +57,7 @@ public class ShopController {
         return "index";
 
     }
+
 
     @GetMapping("/viewDetail/{clothesId}")
     public String viewProductDetail(@PathVariable("clothesId") Long clothesId, Model model, ModelMap modelMap) {

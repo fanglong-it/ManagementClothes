@@ -38,7 +38,9 @@
 
         <div class="col-md-4 mb-5" th:each="clothes:${LIST_CLOTHES}">
             <div class="card" style="width: 18rem;">
-                <img th:src="@{'/get_image/show/'+ ${clothes.getPhotoPath()}}" class="card-img-top" alt="...">
+
+<!--                @{${'/img/' + players.id +'_'+ players.name + '.png'}}-->
+                <img th:src="@{'/images/'+${clothes.getPhotoPath()}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${clothes.name}">Card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -46,7 +48,7 @@
                     <hr>
                     <div class="text-center">
                         <a class="btn btn-outline-dark btn-sm" th:href="|/shop/viewDetail/${clothes.id}|">Details</a>
-                        <a class="btn btn-outline-dark btn-sm" href="#!">Add to cart</a>
+                        <a class="btn btn-outline-dark btn-sm" th:href="|/shoppingCart/add/${clothes.id}/S|">Add to cart</a>
                     </div>
                 </div>
             </div>

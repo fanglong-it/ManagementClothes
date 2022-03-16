@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Small Business - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet"/>
+</head>
+
+<body th:style="'background: url(/assets/img/create-anime-background-style.jpg) no-repeat center center fixed;'">
+
+
+<!-- Responsive navbar-->
+<div th:include="/common/navbar.html"></div>
+
+<!-- Call to Action-->
+<div class="card text-white bg-secondary my-5 py-4 text-center">
+    <div class="card-body">
+        <p class="text-white m-0">This call to action card is a great place to showcase some important
+            information or display a clever tagline!</p>
+    </div>
+</div>
+<!-- Content Row-->
+<!-- Page Content-->
+
+
+<div class="container">
+    <section>
+        <table class="table table-dark table-striped">
+
+
+            <thead class="table-dark">
+            <tr>
+                <th class="col">
+                    <a class="btn btn-primary" th:href="@{'/shoppingCart/clear/'}">Clear Cart</a>
+                </th>
+                <th class="col"></th>
+                <th class="col"></th>
+                <th class="col"></th>
+                <th class="col"></th>
+
+                <th class="col">
+                    <button class="btn btn-check">check out</button>
+                </th>
+            </tr>
+            <tr>
+                <th class="col">Product</th>
+                <th class="col">image</th>
+                <th class="col">Quantity</th>
+                <th class="col">Size</th>
+
+                <th class="col">Price</th>
+                <th class="col">Action</th>
+            </tr>
+            </thead>
+
+            <hr>
+
+            <tbody>
+
+            <div th:if="${NO_OF_ITEMS.intValue() == 0}">
+                <tr>
+
+                    <th style="color: red">Nothing In Cart</th>
+
+                </tr>
+            </div>
+
+            <tr th:each="CartItem : ${CART_ITEMS}">
+                <form th:action="@{'/shoppingCart/update'}" method="post">
+
+                    <td th:text="${CartItem.productname}"></td>
+                    <td>
+                        <img th:src="@{'/images/'+ ${CartItem.getImage()}}" width="100px" height="100px"
+                             alt="iphone 8">
+                    </td>
+                    <td>
+                        <input type="hidden" name="productId" th:value="${CartItem.productid}">
+                        <input type="number" name="quantity" th:value="${CartItem.quantity}">
+
+                    </td>
+                    <td>
+                        <input type="hidden" name="productId" th:value="${CartItem.productid}">
+
+                        <select name="txtsize" id="size">
+                            <option th:value="${CartItem.getSize()}" th:text="${CartItem.getSize()}" selected></option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+
+                        </select>
+
+                    </td>
+                    <td th:text="${CartItem.productprice}"></td>
+                    <td>
+                        <a class="btn btn-danger"
+                           th:href="@{'/shoppingCart/remove/' +${CartItem.productid} }">Remove</a>
+                        <button class="btn btn-primary" type="submit">Update</button>
+                    </td>
+                </form>
+            </tr>
+            <tr>
+                <td class="col"></td>
+                <td class="col"></td>
+                <td class="col"></td>
+                <th class="col"></th>
+                <td class="text text-white">Grand total: <span class="fw-bold" th:text="${TOTAL}"></span></td>
+                <td class="col"></td>
+            </tr>
+            </tbody>
+
+
+            <tr>
+                <td class="col">
+                    <a class="btn btn-primary" th:href="@{/shop/}">Continue Shoping</a></td>
+                <td class="col"></td>
+                <td class="col"></td>
+                <td class="col"></td>
+
+
+                <td class="col"></td>
+            </tr>
+        </table>
+    </section>
+
+</div>
+
+
+<hr>
+
+<!-- Footer-->
+<div th:include="/common/footer.html"></div>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
+</body>
+
+</html>

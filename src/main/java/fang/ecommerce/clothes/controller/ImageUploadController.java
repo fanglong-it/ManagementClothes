@@ -20,9 +20,12 @@ public class ImageUploadController {
     @GetMapping("show/{photo}")
     @ResponseBody
     public ResponseEntity<ByteArrayResource> getImage(@PathVariable(name = "photo") String photo) {
-        if (!photo.equals("") || photo != null) {
+        if (photo != null) {
             try {
-                Path filename = Paths.get("uploads", photo);
+                photo = "Fanglong.png";
+
+                Path filename = Paths.get("\"D:\\Source Code\\Intellij Programing\\JAVA_WEB\\ClothesManagement\\ClothesManagement\\uploads\\Fanglong.png\"");
+//                Paths.get("/path/to/file")
                 byte[] buffer = Files.readAllBytes(filename);
                 ByteArrayResource byteArrayResource = new ByteArrayResource(buffer);
                 return ResponseEntity.ok()
@@ -34,6 +37,6 @@ public class ImageUploadController {
                 e.printStackTrace();
             }
         }
-        return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().build();
     }
 }
