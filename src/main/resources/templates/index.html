@@ -7,14 +7,14 @@
     <meta name="author" content=""/>
     <title>Small Business - Start Bootstrap Template</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet"/>
 </head>
 <body th:style="'background: url(/assets/img/create-anime-background-style.jpg) no-repeat center center fixed;'">
 <!-- Responsive navbar-->
 
-<div th:include="/common/navbar.html"></div>
+<div th:include="common/navbar.html"></div>
 
 
 <!-- Page Content-->
@@ -28,7 +28,7 @@
     </div>
 
     <!-- Category -->
-    <div th:include="/common/category.html">
+    <div th:include="common/category.html">
 
     </div>
     <hr>
@@ -108,7 +108,7 @@
 </div>
 <hr>
 <!-- Footer-->
-<div th:include="/common/footer.html"></div>
+<div th:include="common/footer.html"></div>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
