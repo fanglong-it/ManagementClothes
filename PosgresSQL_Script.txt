@@ -1,0 +1,102 @@
+INSERT INTO public.accounts(
+	 email, is_available, password)
+	VALUES ( 'admin@gmail.com', true, '$2a$10$uKH0Y3zFYkt9578Ws1HMtOQmoH/7rQy7scoqZlF8gVc7B5gyLGnOq');
+
+INSERT INTO public.accounts(
+	 email, is_available, password)
+	VALUES ( 'user@gmail.com', true, '$2a$10$uKH0Y3zFYkt9578Ws1HMtOQmoH/7rQy7scoqZlF8gVc7B5gyLGnOq');
+
+INSERT INTO public.roles(
+	id, name)
+	VALUES (1, 'ADMIN');
+	
+INSERT INTO public.roles(
+	id, name)
+	VALUES (2, 'USER');
+
+
+INSERT INTO public.users(
+	 firstname, lastname, phonenumber, photo, account_id)
+	VALUES ( 'Admin', 'nek', '0984065979', 'khongco.png', 1);
+	
+	INSERT INTO public.users(
+	 firstname, lastname, phonenumber, photo, account_id)
+	VALUES ( 'User', 'nek', '0984065979', 'khongco.png', 2);
+
+
+INSERT INTO public.acc_role(
+	account_id, role_id)
+	VALUES (1, 1);
+	
+INSERT INTO public.acc_role(
+	account_id, role_id)
+	VALUES (2, 2);
+
+
+INSERT INTO public.category(
+	id, name)
+	VALUES (1, 'Ao thun cu');
+	INSERT INTO public.category(
+	id, name)
+	VALUES (2, 'Ao khoac cu');
+	INSERT INTO public.category(
+	id, name)
+	VALUES (3, 'Quan cu');
+	INSERT INTO public.category(
+	id, name)
+	VALUES (4, 'Giay cu');
+
+
+
+INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Ao Thun cu moi ve hang', 'Ao Thun Cu 1', 'httpsdi2ponv0v5otw.cloudfront.netposts202202116206b4cebcdb2f94685578e3s_6206b4da4fd23aa4e552bb8e.jpg', 200000, 1);
+	INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Ao Thun cu moi ve hang', 'Ao Thun Cu 2', 'httpsdi2ponv0v5otw.cloudfront.netposts202009225f6a0259bb59377904aa2175s_5f6a041e2a1eff95fc117f5b.jpg', 200000, 1);
+	INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Ao Thun cu moi ve hang', 'Ao Thun Cu 3', 'httpsdi2ponv0v5otw.cloudfront.netposts2022011861e711c22f3d1933dd3a00f8s_61e711cf93649f4d71e27929.jpg', 200000, 1);
+	INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Ao Thun cu moi ve hang', 'Ao Thun Cu 4', 'httpsdi2ponv0v5otw.cloudfront.netposts20210901612ff76aae766f0009c37833s_612ff77c2a1effb668b1692b.jpg', 200000, 1);
+	INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Ao Thun cu moi ve hang', 'Ao Thun Cu 5', 'httpsdi2ponv0v5otw.cloudfront.netposts202111076188907b67bd910c918fa629s_618890832ca9ab0fa4e36da2.jpg', 200000, 1);
+	
+	
+	INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Ao Khoac cu moi ve hang', 'Ao Khoac Cu 1', 'httpsdi2ponv0v5otw.cloudfront.netposts20210502608ed7f7a4de418f8e697698s_608ed819c936af9aafd8cfd7.jpg', 300000, 2);
+	INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Ao Khoac cu moi ve hang', 'Ao Khoac Cu 2', 'httpsdi2ponv0v5otw.cloudfront.netposts202203036220bcacce1e870cfd337262s_6220bcd688cce33391957e39.jpg', 350000, 2);
+	INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Ao Khoac cu moi ve hang', 'Ao Khoac Cu 3', 'httpsdi2ponv0v5otw.cloudfront.netposts202101035ff232a3c936af21c7e2179ds_5ff232bf43895f2e70260b2d.jpg', 220000, 2);
+	INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Ao Khoac cu moi ve hang', 'Ao Khoac Cu 4', 'httpsdi2ponv0v5otw.cloudfront.netposts2021120161a8607381a36c47361f37bes_61a860a57ec30cba29855654.jpg', 190000, 2);
+	INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Ao Khoac cu moi ve hang', 'Ao Khoac Cu 5', 'httpsdi2ponv0v5otw.cloudfront.netposts2022010361d37d3f275e551b64447d34s_61d37d97cb692c1d6656f0e1.jpg', 299000, 2);
+	
+	INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Quan Cu moi ve hang', 'Quan Cu 1', 'httpsdi2ponv0v5otw.cloudfront.netposts2021062960dbc2e27ec30c0a82d0ff9as_60dbc3086f6c91c0abb402cd.jpg', 299000, 3);
+	INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Quan Cu moi ve hang', 'Quan Cu 2', 'httpsdi2ponv0v5otw.cloudfront.netposts2022011161de53f2bb593726f138daeds_61df9bcc2a1effff596c5b2a.jpg', 299000, 4);
+	INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Quan Cu moi ve hang', 'Quan Cu 3', 'httpsdi2ponv0v5otw.cloudfront.netposts20211101617f9709efd0e4d48e034dccs_617f972dbb5937bf3eb63f8e.jpg', 299000, 2);
+	INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Quan Cu moi ve hang', 'Quan Cu 4', 'httpsdi2ponv0v5otw.cloudfront.netposts20220217620eb6c3c936af18a2f12b03s_62113f02d737fd872b623614.jpg', 299000, 2);
+	INSERT INTO public.clothes(
+	 content, name, path, price, cate_id)
+	VALUES ( 'Quan Cu moi ve hang', 'Quan Cu 5', 'httpsdi2ponv0v5otw.cloudfront.netposts2022010561d66ed14fd23a4dca82ecbds_61e884b5a4de41424e37b0af.jpeg', 299000, 2);
+	
+	
+	
+	
