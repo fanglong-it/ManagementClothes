@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UserController {
 
     @GetMapping("/login")
-    public String loginPage(){
+    public String loginPage() {
         return "login";
     }
 
@@ -29,7 +29,6 @@ public class UserController {
         return "redirect:/";
 
     }
-
 
 
 }

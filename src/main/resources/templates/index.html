@@ -39,16 +39,17 @@
         <div class="col-md-4 mb-5" th:each="clothes:${LIST_CLOTHES}">
             <div class="card" style="width: 18rem;">
 
-<!--                @{${'/img/' + players.id +'_'+ players.name + '.png'}}-->
-                <img th:src="${clothes.getPhotoPath()}" class="card-img-top" alt="...">
+                <!--                @{${'/img/' + players.id +'_'+ players.name + '.png'}}-->
+                <img th:src="${clothes.getPhotoPath()}" class="card-img-top" style="width: 288px; height: 388px"
+                     alt="...">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${clothes.name}">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
+                    <p class="card-text" th:text="${clothes.getContent()}"></p>
                     <hr>
                     <div class="text-center">
                         <a class="btn btn-outline-dark btn-sm" th:href="|/shop/viewDetail/${clothes.id}|">Details</a>
-                        <a class="btn btn-outline-dark btn-sm" th:href="|/shoppingCart/add/${clothes.id}/S|">Add to cart</a>
+                        <a class="btn btn-outline-dark btn-sm" th:href="|/shoppingCart/add/${clothes.id}/S|">Add to
+                            cart</a>
                     </div>
                 </div>
             </div>
@@ -57,42 +58,54 @@
 
         <div class="text-center">
 
-                <div th:if="${totalPages > 0}">
-                    <div class="row">
-                        <p> total Items:
-                            <span th:text="${totalItems}"></span>
-                        </p>
-                    </div>
-                    <div class="text-center">
-                        <div th:if="${searchValue == null}">
+            <div th:if="${totalPages > 0}">
+                <div class="row">
+                    <p> total Items:
+                        <span th:text="${totalItems}"></span>
+                    </p>
+                </div>
+                <div class="align-items-center">
+                    <ul class="pagination justify-content-center">
+
+
+                        <li class="page-item">
+                            <a th:if="${currentPage > 1}"
+                               th:href="@{|/shop/page/${currentPage - 1}?searchValue=${searchValue}|}"
+                               class="page-link">Previous</a>
+                            <span class="page-link disabled" th:if="${currentPage <= 1}">Previous</span>
+                        </li>
 
                         <span th:each="i : ${#numbers.sequence(1, totalPages)}">
-                        <a th:if="${currentPage != i}" th:href="@{|/shop/page/${i}?searchValue=|}" th:text="${i}"></a>
-                            <span th:unless="${currentPage != i}" th:text="${i}"></span> &nbsp; &nbsp;
+
+                            <li class="page-item">
+                                <a th:if="${currentPage != i}" th:href="@{|/shop/page/${i}?searchValue=${searchValue}|}"
+                                   th:text="${i}" class="page-link"></a>
+                            </li>
+                              <li class="page-item active" th:unless="${currentPage != i}">
+
+                                <span class="page-link" th:unless="${currentPage != i}" th:text="${i}"></span>
+
+                            </li>
+
                         </span>
-                        <a th:if="${currentPage < totalPages}" th:href="@{|/shop/page/${currentPage + 1}?searchValue=|}">next</a>
-                        <span th:unless="${currentPage < totalPages}">next</span>
 
-                        <a th:if="${currentPage < totalPages}" th:href="@{|/shop/page/${totalPages}?searchValue=|}">last</a>
-                        <span th:unless="${currentPage < totalPages}">last</span>
-                    </div>
 
-                        <div th:if="${searchValue != null}">
-                            <span th:each="i : ${#numbers.sequence(1, totalPages)}">
-                        <a th:if="${currentPage != i}" th:href="@{|/shop/page/${i}?searchValue=${searchValue}|}" th:text="${i}"></a>
-                            <span th:unless="${currentPage != i}" th:text="${i}"></span> &nbsp; &nbsp;
-                        </span>
-                            <a th:if="${currentPage < totalPages}" th:href="@{|/shop/page/${currentPage + 1}?searchValue=${searchValue}|}">next</a>
-                            <span th:unless="${currentPage < totalPages}">next</span>
-
-                            <a th:if="${currentPage < totalPages}" th:href="@{|/shop/page/${totalPages}?searchValue=${searchValue}|}">last</a>
-                            <span th:unless="${currentPage < totalPages}">last</span>
-
-                        </div>
+                        <li class="page-item">
+                            <a th:if="${currentPage < totalPages}"
+                               th:href="@{|/shop/page/${currentPage + 1}?searchValue=${searchValue}|}"
+                               class="page-link">next</a>
+                            <span class="page-link" th:unless="${currentPage < totalPages}">next</span>
+                        </li>
+                        <li class="page-item">
+                            <a th:if="${currentPage < totalPages}"
+                               th:href="@{|/shop/page/${totalPages}?searchValue=${searchValue}|}"
+                               class="page-link">last</a>
+                            <span class="page-link" th:unless="${currentPage < totalPages}">last</span>
+                        </li>
+                    </ul>
 
                 </div>
-
-                </div>
+            </div>
             <div th:if="${totalPages == 0}">
                 <div class="text-center">
                     <p>Nothing to search!</p>

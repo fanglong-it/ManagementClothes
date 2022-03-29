@@ -1,11 +1,9 @@
 package fang.ecommerce.clothes.service;
 
 
-
 import fang.ecommerce.clothes.dto.MyUser;
 import fang.ecommerce.clothes.entity.AccountEntity;
 import fang.ecommerce.clothes.entity.RoleEntity;
-
 import fang.ecommerce.clothes.entity.UserEntity;
 import fang.ecommerce.clothes.repository.AccountRepository;
 import fang.ecommerce.clothes.repository.UserRepository;
@@ -33,7 +31,7 @@ public class CustomerUserDetailService implements UserDetailsService {
 
         AccountEntity accountEntity = accountRepository.getAccountEntitiesByEmail(s);
 
-        if(accountEntity == null){
+        if (accountEntity == null) {
             throw new UsernameNotFoundException("USERNAME NOT FOUND!");
         }
         // put thong tin vao security duy tri thong tin nguoi dung

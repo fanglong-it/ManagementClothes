@@ -10,7 +10,7 @@ public class AvailableService {
     @Autowired
     private AvailableRepository availableRepository;
 
-    public AvailableEntity getAvailableEntityBySizeId(Long SizeId){
-        return  availableRepository.getBySizeEntity_Id(SizeId);
+    public AvailableEntity getAvailableEntityBySizeId(Long SizeId) {
+        return availableRepository.getBySizeEntity_Id(SizeId);
     }
 }

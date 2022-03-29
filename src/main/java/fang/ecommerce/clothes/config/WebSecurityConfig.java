@@ -22,18 +22,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //    private DataSource dataSource;
 
     @Bean
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         return new CustomerUserDetailService();
     }
 
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider(){
+    public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());
@@ -63,16 +63,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                    .loginPage("/user/login")
-                	.usernameParameter("email")
-                    .defaultSuccessUrl("/")
+                .loginPage("/user/login")
+                .usernameParameter("email")
+                .defaultSuccessUrl("/")
 //                    .successHandler(authenticationSuccessHandler)
-                    .failureUrl("/user/login?incorrectAccount")
-                    .permitAll()
+                .failureUrl("/user/login?incorrectAccount")
+                .permitAll()
                 .and()
                 .logout()
-                    .logoutUrl("/user/logout")
-                    .permitAll()
+                .logoutUrl("/user/logout")
+                .permitAll()
                 .and().exceptionHandling().accessDeniedPage("/user/access-denied");
     }
 

@@ -15,7 +15,6 @@ public class CategoryEntity {
     private String name;
 
 
-
     @OneToMany(mappedBy = "categoryEntity")
     private Set<ClothesEntity> clothesEntity;
 

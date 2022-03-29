@@ -5,9 +5,6 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.security.AuthProvider;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -21,10 +18,10 @@ public class AppController {
             if (roles.contains("ADMIN")) {
                 return "redirect:/admin/";
             } else {
-                return "redirect:/shop/";
+                return "redirect:/shop/page/1?searchValue=";
 
             }
         }
-        return "redirect:/shop/";
+        return "redirect:/shop/page/1?searchValue=";
     }
 }

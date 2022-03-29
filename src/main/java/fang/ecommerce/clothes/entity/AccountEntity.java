@@ -2,7 +2,6 @@ package fang.ecommerce.clothes.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 @Entity

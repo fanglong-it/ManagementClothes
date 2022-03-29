@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 public class CustomUserDetail implements UserDetails {
     private AccountEntity accountEntity;
@@ -24,13 +23,13 @@ public class CustomUserDetail implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<RoleEntity> roleEntities = accountEntity.getRoles();
         List<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<>();
-        for(RoleEntity role : roleEntities){
+        for (RoleEntity role : roleEntities) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
         return grantedAuthorities;
     }
 
-    public boolean hasRole(String name){
+    public boolean hasRole(String name) {
         return this.accountEntity.hasRole(name);
 
     }

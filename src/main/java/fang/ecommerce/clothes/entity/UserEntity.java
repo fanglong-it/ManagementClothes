@@ -13,8 +13,6 @@
 package fang.ecommerce.clothes.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 
@@ -112,7 +110,6 @@ public class UserEntity {
     public void setOrderEntitySet(Set<OrderEntity> orderEntitySet) {
         this.orderEntitySet = orderEntitySet;
     }
-
 
 
 }

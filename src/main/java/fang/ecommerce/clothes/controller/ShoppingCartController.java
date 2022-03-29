@@ -58,7 +58,7 @@ public class ShoppingCartController {
         ClothesEntity clothes = clothesService.getById(productId);
         if (clothes != null) {
             CartItem item = new CartItem(clothes.getId(), clothes.getName(),
-                    clothes.getPrice(), 1, clothes.getCategoryEntity().getName(),size, clothes.getPhotoPath());
+                    clothes.getPrice(), 1, clothes.getCategoryEntity().getName(), size, clothes.getPhotoPath());
 
 
             item.setQuantity(1);
@@ -72,7 +72,7 @@ public class ShoppingCartController {
         ClothesEntity clothes = clothesService.getById(productId);
         if (clothes != null) {
             CartItem item = new CartItem(clothes.getId(), clothes.getName(),
-                    clothes.getPrice(), 1, clothes.getCategoryEntity().getName(),size, clothes.getPhotoPath());
+                    clothes.getPrice(), 1, clothes.getCategoryEntity().getName(), size, clothes.getPhotoPath());
             item.setQuantity(1);
             shoppingCartService.add(item);
         }

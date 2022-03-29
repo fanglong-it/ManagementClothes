@@ -33,7 +33,6 @@ public class CartItem {
     private String image;
 
 
-
     public CartItem(Long productid, String productname, float productprice, int quantity, String categoryid, String size, String image) {
         this.productid = productid;
         this.productname = productname;

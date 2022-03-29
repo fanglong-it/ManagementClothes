@@ -37,103 +37,107 @@
                 <div class="col-12 mb-2">
                     <!--                    <img th:src="@{'/images/'+${clothes.getPhotoPath()}}" class="card-img-top" alt="...">-->
                     <img class="img-fluid rounded mb-lg-0" th:src="${CLOTHES.getPhotoPath()}"
-                         alt="..." style="width: 710px; height: 623px;"/>
+                         alt="..." style="width: 680px; height: 580px;"/>
                     <hr>
 
                 </div>
+
+
             </div>
 
         </div>
+        <div class="col-lg-6">
+            <form th:action="|/shoppingCart/add/|" method="post">
 
-        <form th:action="|/shoppingCart/add/|" method="post">
 
+                <div class="btn-light">
 
-            <div class="col-md-6 btn-light">
+                    <input type="hidden" name="txtclothesid" id="" th:value="${CLOTHES.id}">
 
-                <input type="hidden" name="txtclothesid" id="" th:value="${CLOTHES.id}">
-
-                <h5 th:text="${CLOTHES.name}"></h5>
-                <p class="mb-2 text-muted text-uppercase small" th:text="${CLOTHES.getCategoryEntity().name}"></p>
-                <div class="row">
-                    <div class="container">
-                        <span id="rateMe1"></span>
+                    <h5 th:text="${CLOTHES.name}"></h5>
+                    <p class="mb-2 text-muted text-uppercase small" th:text="${CLOTHES.getCategoryEntity().name}"></p>
+                    <div class="row">
+                        <div class="container">
+                            <span id="rateMe1"></span>
+                        </div>
                     </div>
+                    <p><span class="mr-1"><strong th:text="${CLOTHES.price}"></strong>đ</span></p>
+                    <p class="pt-1" th:text="${CLOTHES.getContent()}">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.
+                        Numquam, sapiente illo. Sit
+                        error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio,
+                        officia quis dolore quos sapiente tempore alias.</p>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-borderless mb-0">
+                            <tbody>
+                            <tr>
+                                <th class="pl-0 w-25" scope="row"><strong>Model</strong></th>
+                                <td th:text="${CLOTHES.getCategoryEntity().getName()}"></td>
+                            </tr>
+                            <tr>
+                                <th class="pl-0 w-25" scope="row"><strong>Color</strong></th>
+                                <td>Black</td>
+                            </tr>
+                            <tr>
+                                <th class="pl-0 w-25" scope="row"><strong>Delivery</strong></th>
+                                <td>USA, Europe</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr>
+                    <div class="table-responsive mb-2">
+                        <table class="table table-sm table-borderless">
+                            <tbody>
+                            <tr>
+                                <td class="pl-0 pb-0 w-25">Quantity</td>
+                                <td class="pb-0">Select size</td>
+                            </tr>
+                            <tr>
+                                <td class="pl-0">
+                                    <div class="def-number-input number-input safari_only mb-0">
+
+                                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <!--                            <div class="mt-1" th:each="map : ${SIZE_STOCK}">-->
+                                    <!--                                <div class="form-check form-check-inline pl-0">-->
+                                    <!--                                    <input type="radio" class="form-check-input" id="small"-->
+                                    <!--                                           name="materialExampleRadios" checked>-->
+                                    <!--                                    <span>Size: </span>-->
+                                    <!--                                    <label class="form-check-label small text-uppercase card-link-secondary"-->
+                                    <!--                                           for="small" th:text="${map.key.name}"></label>-->
+                                    <!--                                    <br>-->
+                                    <!--                                    <span>Stock: </span>-->
+
+                                    <!--                                    <label class="form-check-label small text-uppercase card-link-secondary"-->
+                                    <!--                                           for="small" th:text="${map.value.stock}"></label>-->
+
+
+                                    <!--                                </div>-->
+                                    <!--                            </div>-->
+                                    <div class="form-check form-check-inline pl-0">
+                                        <select name="txtsize" id="size">
+                                            <option value="S" selected>S</option>
+                                            <option value="M">M</option>
+                                            <option value="L">L</option>
+                                            <option value="XL">XL</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-md mr-1 mb-2">
+                        Add to cart
+                    </button>
                 </div>
-                <p><span class="mr-1"><strong th:text="${CLOTHES.price}"></strong>đ</span></p>
-                <p class="pt-1" th:text="${CLOTHES.getContent()}">Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit.
-                    Numquam, sapiente illo. Sit
-                    error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio,
-                    officia quis dolore quos sapiente tempore alias.</p>
-                <div class="table-responsive">
-                    <table class="table table-sm table-borderless mb-0">
-                        <tbody>
-                        <tr>
-                            <th class="pl-0 w-25" scope="row"><strong>Model</strong></th>
-                            <td th:text="${CLOTHES.getCategoryEntity().getName()}"></td>
-                        </tr>
-                        <tr>
-                            <th class="pl-0 w-25" scope="row"><strong>Color</strong></th>
-                            <td>Black</td>
-                        </tr>
-                        <tr>
-                            <th class="pl-0 w-25" scope="row"><strong>Delivery</strong></th>
-                            <td>USA, Europe</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <hr>
-                <div class="table-responsive mb-2">
-                    <table class="table table-sm table-borderless">
-                        <tbody>
-                        <tr>
-                            <td class="pl-0 pb-0 w-25">Quantity</td>
-                            <td class="pb-0">Select size</td>
-                        </tr>
-                        <tr>
-                            <td class="pl-0">
-                                <div class="def-number-input number-input safari_only mb-0">
+            </form>
+        </div>
 
-                                    <input class="quantity" min="0" name="quantity" value="1" type="number">
-
-                                </div>
-                            </td>
-                            <td>
-                                <!--                            <div class="mt-1" th:each="map : ${SIZE_STOCK}">-->
-                                <!--                                <div class="form-check form-check-inline pl-0">-->
-                                <!--                                    <input type="radio" class="form-check-input" id="small"-->
-                                <!--                                           name="materialExampleRadios" checked>-->
-                                <!--                                    <span>Size: </span>-->
-                                <!--                                    <label class="form-check-label small text-uppercase card-link-secondary"-->
-                                <!--                                           for="small" th:text="${map.key.name}"></label>-->
-                                <!--                                    <br>-->
-                                <!--                                    <span>Stock: </span>-->
-
-                                <!--                                    <label class="form-check-label small text-uppercase card-link-secondary"-->
-                                <!--                                           for="small" th:text="${map.value.stock}"></label>-->
-
-
-                                <!--                                </div>-->
-                                <!--                            </div>-->
-                                <div class="form-check form-check-inline pl-0">
-                                    <select name="txtsize" id="size">
-                                        <option value="S" selected>S</option>
-                                        <option value="M">M</option>
-                                        <option value="L">L</option>
-                                        <option value="XL">XL</option>
-                                    </select>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <button type="submit" class="btn btn-primary btn-md mr-1 mb-2">
-                    Add to cart
-                </button>
-            </div>
-        </form>
 
     </div>
 </div>

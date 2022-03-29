@@ -37,6 +37,6 @@ public class ImageUploadController {
                 e.printStackTrace();
             }
         }
-            return ResponseEntity.badRequest().build();
+        return ResponseEntity.badRequest().build();
     }
 }
