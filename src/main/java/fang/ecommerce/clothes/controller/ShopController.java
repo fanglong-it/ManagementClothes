@@ -1,6 +1,7 @@
 package fang.ecommerce.clothes.controller;
 
 import fang.ecommerce.clothes.entity.AvailableEntity;
+import fang.ecommerce.clothes.entity.CategoryEntity;
 import fang.ecommerce.clothes.entity.ClothesEntity;
 import fang.ecommerce.clothes.entity.SizeEntity;
 import fang.ecommerce.clothes.service.*;
@@ -37,21 +38,21 @@ public class ShopController {
     ShoppingCartService shoppingCartService;
 
 
-//    @GetMapping("/")
-//    public String homePage(Model model) {
-//        int pageNo = 1;
-//        int pageSize = 3;
-//        Page<ClothesEntity> page = clothesService.findPaginated(pageNo, pageSize);
-//        List<ClothesEntity> clothesEntityList = page.getContent();
-//        List<CategoryEntity> categoryEntityList = null;
-//        model.addAttribute("LIST_CLOTHES", clothesEntityList);
-//        model.addAttribute("currentPage", pageNo);
-//        model.addAttribute("totalPages", page.getTotalPages());
-//        model.addAttribute("totalItems", page.getTotalElements());
-//        model.addAttribute("LIST_CATEGORY", categoryService.findAllCategory());
-//        return "index";
-//
-//    }
+    @GetMapping("/")
+    public String homePage(Model model) {
+        int pageNo = 1;
+        int pageSize = 3;
+        Page<ClothesEntity> page = clothesService.findPaginated(pageNo, pageSize);
+        List<ClothesEntity> clothesEntityList = page.getContent();
+        List<CategoryEntity> categoryEntityList = null;
+        model.addAttribute("LIST_CLOTHES", clothesEntityList);
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("LIST_CATEGORY", categoryService.findAllCategory());
+        return "index";
+
+    }
 
 
     @GetMapping("/viewDetail/{clothesId}")
