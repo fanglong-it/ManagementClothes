@@ -41,12 +41,13 @@ public class ShopController {
     @GetMapping("/")
     public String homePage(Model model) {
         int pageNo = 1;
-        int pageSize = 3;
+        int pageSize = 6;
         Page<ClothesEntity> page = clothesService.findPaginated(pageNo, pageSize);
         List<ClothesEntity> clothesEntityList = page.getContent();
         List<CategoryEntity> categoryEntityList = null;
         model.addAttribute("LIST_CLOTHES", clothesEntityList);
         model.addAttribute("currentPage", pageNo);
+        model.addAttribute("searchValue", "");
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
         model.addAttribute("LIST_CATEGORY", categoryService.findAllCategory());
