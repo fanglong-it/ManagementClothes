@@ -1,13 +1,9 @@
 /*
- *
- *
- * Project ProductManager
- * Copyright (C) $year by Fanglong-it. All Rights Reserved.
- * For more information : Fang.longpc@gmail.com
- * Example project exist at : https://github.com/fanglong-it/
- * 11/11/21, 2:15 PM
- *
- *
+ * Copyright (c) 2022. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+ * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+ * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+ * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
 
 package fang.ecommerce.clothes.entity;

@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2022. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+ * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+ * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+ * Vestibulum commodo. Ut rhoncus gravida arcu.
+ */
+
 package fang.ecommerce.clothes.dto;/*
  *
  *
@@ -6,18 +14,6 @@ package fang.ecommerce.clothes.dto;/*
  * For more information : Fang.longpc@gmail.com
  * Example project exist at : https://github.com/fanglong-it/
  * 10/22/21, 1:46 PM
- *
- *
- */
-
-/*
- *
- *
- * Project ProductManager
- * Copyright (C) $year by Fanglong-it. All Rights Reserved.
- * For more information : Fang.longpc@gmail.com
- * Example project exist at : https://github.com/fanglong-it/
- * 10/23/21, 7:29 PM
  *
  *
  */

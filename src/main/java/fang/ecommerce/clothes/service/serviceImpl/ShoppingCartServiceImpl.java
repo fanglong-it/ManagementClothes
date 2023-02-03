@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2022. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+ * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+ * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+ * Vestibulum commodo. Ut rhoncus gravida arcu.
+ */
+
 package fang.ecommerce.clothes.service.serviceImpl;/*
  *
  *
@@ -19,18 +27,6 @@ import org.springframework.web.context.annotation.SessionScope;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-
-/*
- *
- *
- * Project ProductManager
- * Copyright (C) $year by Fanglong-it. All Rights Reserved.
- * For more information : Fang.longpc@gmail.com
- * Example project exist at : https://github.com/fanglong-it/
- * 10/23/21, 7:29 PM
- *
- *
- */
 
 @Service
 @SessionScope

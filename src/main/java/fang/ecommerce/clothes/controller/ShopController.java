@@ -1,7 +1,14 @@
+/*
+ * Copyright (c) 2022. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+ * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+ * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+ * Vestibulum commodo. Ut rhoncus gravida arcu.
+ */
+
 package fang.ecommerce.clothes.controller;
 
 import fang.ecommerce.clothes.entity.AvailableEntity;
-import fang.ecommerce.clothes.entity.CategoryEntity;
 import fang.ecommerce.clothes.entity.ClothesEntity;
 import fang.ecommerce.clothes.entity.SizeEntity;
 import fang.ecommerce.clothes.service.*;
@@ -44,7 +51,7 @@ public class ShopController {
         int pageSize = 6;
         Page<ClothesEntity> page = clothesService.findPaginated(pageNo, pageSize);
         List<ClothesEntity> clothesEntityList = page.getContent();
-        List<CategoryEntity> categoryEntityList = null;
+        // List<CategoryEntity> categoryEntityList = null;
         model.addAttribute("LIST_CLOTHES", clothesEntityList);
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("searchValue", "");
@@ -53,6 +60,12 @@ public class ShopController {
         model.addAttribute("LIST_CATEGORY", categoryService.findAllCategory());
         return "index";
 
+    }
+
+
+    @GetMapping("/about")
+    public String aboutPage(){
+        return "about";
     }
 
 

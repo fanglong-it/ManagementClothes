@@ -1,3 +1,11 @@
+<!--
+  ~ Copyright (c) 2022. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  ~ Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+  ~ Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+  ~ Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+  ~ Vestibulum commodo. Ut rhoncus gravida arcu.
+  -->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
@@ -5,126 +13,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>Small Business - Start Bootstrap Template</title>
+    <title>Home</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/css/styles.css" rel="stylesheet"/>
+    <!--    <link href="/css/styles.css" rel="stylesheet"/>-->
+    <!-- Vendor CSS Files -->
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy"
+          rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet"/>
+
 </head>
-<body th:style="'background: url(/assets/img/create-anime-background-style.jpg) no-repeat center center fixed;'">
+<body>
 <!-- Responsive navbar-->
+<header id="header" class="fixed-top d-flex justify-content-center align-items-center header-transparent">
+    <div th:include="common/navbar.html"></div>
+</header><!-- End Header -->
 
-<div th:include="common/navbar.html"></div>
-
+<section id="hero">
+    <div class="hero-container">
+        <h1>Home</h1>
+        <h2>All your items below</h2>
+        <a href="#shopping" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
+    </div>
+</section>
 
 <!-- Page Content-->
-<div class="container px-4 px-lg-5">
-    <!-- Heading Row-->
+<main id="main">
+    <section id="shopping" style="background-color: white">
+        <div class="container px-4 px-lg-5">
+            <!-- Heading Row-->
+            <!-- Call to Action-->
+            <div class="card text-white bg-secondary my-5 py-4 text-center">
+                <div class="card-body"><p class="text-white m-0">This call to action card is a great place to showcase
+                    some
+                    important information or display a clever tagline!</p></div>
+            </div>
+            <!-- Category -->
+            <div th:include="common/category.html">
+            </div>
+            <hr>
+            <!-- Content Row-->
+            <div class="row gx-4 gx-lg-5">
 
-    <!-- Call to Action-->
-    <div class="card text-white bg-secondary my-5 py-4 text-center">
-        <div class="card-body"><p class="text-white m-0">This call to action card is a great place to showcase some
-            important information or display a clever tagline!</p></div>
-    </div>
+                <div class="col-md-4 mb-5" th:each="clothes:${LIST_CLOTHES}">
+                    <div class="card" style="width: 20rem;">
 
-    <!-- Category -->
-    <div th:include="common/category.html">
-
-    </div>
-    <hr>
-
-    <!-- Content Row-->
-    <div class="row gx-4 gx-lg-5">
-
-        <div class="col-md-4 mb-5" th:each="clothes:${LIST_CLOTHES}">
-            <div class="card" style="width: 18rem;">
-
-                <!--                @{${'/img/' + players.id +'_'+ players.name + '.png'}}-->
-                <img th:src="${clothes.getPhotoPath()}" class="card-img-top" style="width: 288px; height: 388px"
-                     alt="...">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${clothes.name}">Card title</h5>
-                    <p class="card-text" th:text="${clothes.getContent()}"></p>
-                    <hr>
-                    <div class="text-center">
-                        <a class="btn btn-outline-dark btn-sm" th:href="|/shop/viewDetail/${clothes.id}|">Details</a>
-                        <a class="btn btn-outline-dark btn-sm" th:href="|/shoppingCart/add/${clothes.id}/S|">Add to
-                            cart</a>
+                        <!--                @{${'/img/' + players.id +'_'+ players.name + '.png'}}-->
+                        <img th:src="${clothes.getPhotoPath()}" class="card-img-top" style="width: 318px; height: 388px"
+                             alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${clothes.name}">Card title</h5>
+                            <p class="card-text" th:text="${clothes.getContent()}"></p>
+                            <hr>
+                            <div class="text-center">
+                                <a class="btn btn-outline-dark btn-sm" th:href="|/shop/viewDetail/${clothes.id}|">Details</a>
+                                <a class="btn btn-outline-dark btn-sm" th:href="|/shoppingCart/add/${clothes.id}/S|">Add
+                                    to
+                                    cart</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                <div class="text-center">
+                    <div th:if="${totalPages > 0}">
+                        <div class="row">
+                            <p> total Items:
+                                <span th:text="${totalItems}"></span>
+                            </p>
+                        </div>
+                        <div class="align-items-center">
+                            <ul class="pagination justify-content-center">
 
 
-        <div class="text-center">
+                                <li class="page-item">
+                                    <a th:if="${currentPage > 1}"
+                                       th:href="@{|/shop/page/${currentPage - 1}?searchValue=${searchValue}|}"
+                                       class="page-link">Previous</a>
+                                    <span class="page-link disabled" th:if="${currentPage <= 1}">Previous</span>
+                                </li>
 
-            <div th:if="${totalPages > 0}">
-                <div class="row">
-                    <p> total Items:
-                        <span th:text="${totalItems}"></span>
-                    </p>
-                </div>
-                <div class="align-items-center">
-                    <ul class="pagination justify-content-center">
-
-
-                        <li class="page-item">
-                            <a th:if="${currentPage > 1}"
-                               th:href="@{|/shop/page/${currentPage - 1}?searchValue=${searchValue}|}"
-                               class="page-link">Previous</a>
-                            <span class="page-link disabled" th:if="${currentPage <= 1}">Previous</span>
-                        </li>
-
-                        <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+                                <span th:each="i : ${#numbers.sequence(1, totalPages)}">
 
                             <li class="page-item">
                                 <a th:if="${currentPage != i}" th:href="@{|/shop/page/${i}?searchValue=${searchValue}|}"
                                    th:text="${i}" class="page-link"></a>
                             </li>
                               <li class="page-item active" th:unless="${currentPage != i}">
-
                                 <span class="page-link" th:unless="${currentPage != i}" th:text="${i}"></span>
-
                             </li>
-
                         </span>
-
-
-                        <li class="page-item">
-                            <a th:if="${currentPage < totalPages}"
-                               th:href="@{|/shop/page/${currentPage + 1}?searchValue=${searchValue}|}"
-                               class="page-link">next</a>
-                            <span class="page-link" th:unless="${currentPage < totalPages}">next</span>
-                        </li>
-                        <li class="page-item">
-                            <a th:if="${currentPage < totalPages}"
-                               th:href="@{|/shop/page/${totalPages}?searchValue=${searchValue}|}"
-                               class="page-link">last</a>
-                            <span class="page-link" th:unless="${currentPage < totalPages}">last</span>
-                        </li>
-                    </ul>
-
+                                <li class="page-item">
+                                    <a th:if="${currentPage < totalPages}"
+                                       th:href="@{|/shop/page/${currentPage + 1}?searchValue=${searchValue}|}"
+                                       class="page-link">next</a>
+                                    <span class="page-link" th:unless="${currentPage < totalPages}">next</span>
+                                </li>
+                                <li class="page-item">
+                                    <a th:if="${currentPage < totalPages}"
+                                       th:href="@{|/shop/page/${totalPages}?searchValue=${searchValue}|}"
+                                       class="page-link">last</a>
+                                    <span class="page-link" th:unless="${currentPage < totalPages}">last</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div th:if="${totalPages == 0}">
+                        <div class="text-center">
+                            <p>Nothing to search!</p>
+                            <a th:href="@{|/shop/page/1?searchValue=|}">Click to return</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div th:if="${totalPages == 0}">
-                <div class="text-center">
-                    <p>Nothing to search!</p>
-                    <a th:href="@{|/shop/page/1?searchValue=|}">Click to return</a>
-                </div>
-
-            </div>
-
         </div>
+    </section>
+</main>
 
-
-    </div>
-</div>
 <hr>
 <!-- Footer-->
 <div th:include="common/footer.html"></div>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="/js/scripts.js"></script>
+<!--<script src="/js/scripts.js"></script>-->
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/purecounter/purecounter.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="/assets/vendor/php-email-form/validate.js"></script>
+<!-- Template Main JS File -->
+<script src="/assets/js/main.js"></script>
+
 </body>
 </html>

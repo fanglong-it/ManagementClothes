@@ -1,3 +1,11 @@
+<!--
+  ~ Copyright (c) 2022. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  ~ Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+  ~ Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+  ~ Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+  ~ Vestibulum commodo. Ut rhoncus gravida arcu.
+  -->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
@@ -8,137 +16,159 @@
     <title>Small Business - Start Bootstrap Template</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico"/>
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/css/styles.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/assets/css/style.css" rel="stylesheet">
 </head>
-<body th:style="'background: url(/assets/img/create-anime-background-style.jpg) no-repeat center center fixed;'">
+<body>
 <!-- Responsive navbar-->
 <div th:include="common/navbar.html"></div>
+<section id="hero">
+    <div class="hero-container">
+        <h1>Login</h1>
+        <h2>If you haven't accounted yet click register!</h2>
+        <a href="#login" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
+    </div>
+</section>
 <!-- Call to Action-->
 <div class="card text-white bg-secondary my-5 py-4 text-center">
     <div class="card-body"><p class="text-white m-0">This call to action card is a great place to showcase some
         important information or display a clever tagline!</p></div>
 </div>
 <!-- Page Content-->
-<div class="container">
-    <div class="form-control">
-        <div class="d-md-flex align-items-center justify-content-between">
-            <div class="box-1 mt-md-0 mt-5">
-                <img src="https://images.pexels.com/photos/2033997/pexels-photo-2033997.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                     class="" alt="" style="max-height: 700px;width: 600px;">
-            </div>
-            <div class=" box-2 d-flex flex-column h-100">
-                <div class="mt-5" id="CreateAccount" style="display: none;">
-                    <h1 class="text-center">Create Account.</h1>
-                    <p class="text-muted mb-2">Share your thouhts with the world form today.</p>
-                    <div class="d-flex flex-column ">
-                        <hr>
-                        <div class="mb-3 row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" value="email@example.com">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="inputPassword" class="col-sm-2 col-form-label">RePassword</label>
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label class="col-sm-2 col-form-label">Phone</label>
-                            <div class="col-sm-10">
-                                <input type="tel" class="form-control">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <div class="col-sm-12">
-                                <input type="submit" class="form-control btn-primary" value="Create">
-                            </div>
-                        </div>
+<main id="main">
+    <section id="login">
 
-                        <p class="text-muted mb-2">Continue with...</p>
-                        <div class="d-flex align-items-center"><a href="#" class="box me-2 selectio"> <span
-                                class="fab fa-facebook-f mb-2"></span>
-                            <p class="mb-0">Facebook</p>
-                        </a> <a href="#" class="box me-2"> <span class="fab fa-google mb-2"></span>
-                            <p class="mb-0">Google</p>
-                        </a> <a href="#" class="box"> <span class="far fa-envelope mb-2"></span>
-                            <p class="mb-0">Email</p>
-                        </a></div>
 
-                        <div class="mt-auto text-center">
-                            <p class="footer text-muted mb-0 mt-md-0 mt-4">By register you agree with our <span
-                                    class="text-primary">terms and conditions</span> and <span class="text-primary">privacy policy</span>
-                            </p>
+        <div class="container">
+            <div class="form-control">
+                <div class="d-md-flex align-items-center justify-content-between">
+                    <div class="box-1 mt-md-0 mt-5">
+                        <img src="https://images.pexels.com/photos/2033997/pexels-photo-2033997.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                             class="" alt="" style="max-height: 700px;width: 600px;">
+                    </div>
+                    <div class=" box-2 d-flex flex-column h-100">
+                        <div class="mt-5" id="CreateAccount" style="display: none;">
+                            <h1 class="text-center">Create Account.</h1>
+                            <p class="text-muted mb-2">Share your thouhts with the world form today.</p>
+                            <div class="d-flex flex-column ">
+                                <hr>
+                                <div class="mb-3 row">
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="email@example.com">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="inputPassword" class="col-sm-2 col-form-label">Re-Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label">Phone</label>
+                                    <div class="col-sm-10">
+                                        <input type="tel" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <div class="col-sm-12">
+                                        <input type="submit" class="form-control btn-primary" value="Create">
+                                    </div>
+                                </div>
+
+                                <p class="text-muted mb-2">Continue with...</p>
+                                <div class="d-flex align-items-center"><a href="#" class="box me-2 selectio"> <span
+                                        class="fab fa-facebook-f mb-2"></span>
+                                    <p class="mb-0">Facebook</p>
+                                </a> <a href="#" class="box me-2"> <span class="fab fa-google mb-2"></span>
+                                    <p class="mb-0">Google</p>
+                                </a> <a href="#" class="box"> <span class="far fa-envelope mb-2"></span>
+                                    <p class="mb-0">Email</p>
+                                </a></div>
+
+                                <div class="mt-auto text-center">
+                                    <p class="footer text-muted mb-0 mt-md-0 mt-4">By register you agree with our <span
+                                            class="text-primary">terms and conditions</span> and <span
+                                            class="text-primary">privacy policy</span>
+                                    </p>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="mb-0 text-muted">Already have an account?</p>
+                                    <a class="btn btn-primary" id="1" onclick="onclick_load(this.id)">Login</a>
+                                    <!-- <div class="btn btn-primary">Log in<span class="fas fa-chevron-right ms-1"></span></div> -->
+                                </div>
+
+                            </div>
                         </div>
-                        <div class="mt-3">
-                            <p class="mb-0 text-muted">Already have an account?</p>
-                            <a class="btn btn-primary" id="1" onclick="onclick_load(this.id)">Login</a>
-                            <!-- <div class="btn btn-primary">Log in<span class="fas fa-chevron-right ms-1"></span></div> -->
-                        </div>
+                        <form th:action="@{/user/login}" method="post">
+                            <div class="mt-5" id="LoginAccount" style="display: inline-block;">
+
+                                <h1 class="mb-1 h-1 text-center">Login</h1>
+                                <div class="d-flex flex-column ">
+                                    <hr>
+                                    <div class="mb-3 row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="email" class="form-control" id="staticEmail"
+                                                   value="email@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" name="password" class="form-control"
+                                                   id="inputPassword">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <div class="col-sm-12">
+                                            <button type="submit" class="btn btn-primary">Login</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <p class="mb-0 text-muted">Haven't Account ?</p>
+                                        <div class="btn btn-primary" id="2" onclick="onclick_load(this.id)">Create
+                                            Account<span
+                                                    class="fas fa-chevron-right ms-1"></span></div>
+                                    </div>
+                                    <div class="mt-auto text-center">
+                                        <p class="footer text-muted mb-0 mt-md-0 mt-4">By login you agree with our <span
+                                                class="text-primary">terms and conditions</span> and <span
+                                                class="text-primary">privacy policy</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
 
                     </div>
+                    <span class="fas fa-times"></span>
                 </div>
-                <form th:action="@{/user/login}" method="post">
-                    <div class="mt-5" id="LoginAccount" style="display: inline-block;">
-
-                        <h1 class="mb-1 h-1 text-center">Login</h1>
-                        <div class="d-flex flex-column ">
-                            <hr>
-                            <div class="mb-3 row">
-                                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="email" class="form-control" id="staticEmail"
-                                           value="email@example.com">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                                <div class="col-sm-10">
-                                    <input type="password" name="password" class="form-control" id="inputPassword">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Login</button>
-                                </div>
-                            </div>
-                            <div class="mt-3">
-                                <p class="mb-0 text-muted">Haven't Account ?</p>
-                                <div class="btn btn-primary" id="2" onclick="onclick_load(this.id)">Create Account<span
-                                        class="fas fa-chevron-right ms-1"></span></div>
-                            </div>
-                            <div class="mt-auto text-center">
-                                <p class="footer text-muted mb-0 mt-md-0 mt-4">By login you agree with our <span
-                                        class="text-primary">terms and conditions</span> and <span class="text-primary">privacy policy</span>
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </form>
-
-
             </div>
-            <span class="fas fa-times"></span>
+
         </div>
-    </div>
-
-</div>
+    </section>
+</main>
 <hr>
-<!-- Footer-->
-<footer class="py-5 bg-dark">
-    <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Fang Shop 2021</p></div>
-
-</footer>
-
 <script>
     function onclick_load(id) {
         switch (id) {
@@ -155,9 +185,22 @@
         }
     }
 </script>
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="/js/scripts.js"></script>
+<!-- ======= Footer ======= -->
+<div th:include="common/footer.html"></div>
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/purecounter/purecounter.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/assets/js/main.js"></script>
 </body>
 </html>
