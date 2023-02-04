@@ -25,7 +25,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String loginPage() {
-        return "login";
+        return "user/login";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)

@@ -19,7 +19,7 @@ public class AdminController {
 
     @GetMapping("/")
     public String adminHome() {
-        return "admin/home";
+        return "admin/index";
     }
 
 

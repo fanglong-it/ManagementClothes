@@ -44,7 +44,6 @@ public class ShopController {
     @Autowired
     ShoppingCartService shoppingCartService;
 
-
     @GetMapping("/")
     public String homePage(Model model) {
         int pageNo = 1;
@@ -58,16 +57,14 @@ public class ShopController {
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
         model.addAttribute("LIST_CATEGORY", categoryService.findAllCategory());
-        return "index";
+        return "user/index";
 
     }
-
 
     @GetMapping("/about")
-    public String aboutPage(){
-        return "about";
+    public String aboutPage() {
+        return "user/about";
     }
-
 
     @GetMapping("/viewDetail/{clothesId}")
     public String viewProductDetail(@PathVariable("clothesId") Long clothesId, Model model, ModelMap modelMap) {
@@ -75,19 +72,18 @@ public class ShopController {
         model.addAttribute("SIZE", sizeService.findAllSizeById(clothesId));
         List<SizeEntity> sizeEntityList = sizeService.findAllSizeById(clothesId);
         HashMap<SizeEntity, AvailableEntity> hashMap = new HashMap<>();
-        for (SizeEntity size :
-                sizeEntityList) {
+        for (SizeEntity size : sizeEntityList) {
             AvailableEntity availableEntity = availableService.getAvailableEntityBySizeId(size.getId());
 
             hashMap.put(size, availableEntity);
         }
         modelMap.put("SIZE_STOCK", hashMap);
-        return "detail";
+        return "user/detail";
     }
 
-
     @GetMapping("/page/{pageNo}")
-    public String findPaginated(@PathVariable("pageNo") int pageNo, Model model, @RequestParam("searchValue") String value) {
+    public String findPaginated(@PathVariable("pageNo") int pageNo, Model model,
+            @RequestParam("searchValue") String value) {
         int pageSize = 6;
         Page<ClothesEntity> page = null;
         if (value != null) {
@@ -108,8 +104,7 @@ public class ShopController {
         model.addAttribute("totalItems", page.getTotalElements());
         model.addAttribute("LIST_CLOTHES", clothesEntityList);
         model.addAttribute("LIST_CATEGORY", categoryService.findAllCategory());
-        return "index";
+        return "user/index";
     }
-
 
 }

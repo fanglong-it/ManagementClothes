@@ -66,7 +66,7 @@ public class ShoppingCartController {
         model.addAttribute("TOTAL", shoppingCartService.getAmount());
         model.addAttribute("NO_OF_ITEMS", shoppingCartService.getCount());
 
-        return "cartItems";
+        return "user/cartItems";
     }
 
     @RequestMapping(value = "add/", method = RequestMethod.POST)
